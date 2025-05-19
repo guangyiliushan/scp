@@ -1,0 +1,8 @@
+#include "scp.stdio.h"
+
+fun main() {
+    var i : int = 0
+    val Hello : str = "Hello, scp!"
+    println(Hello)
+    println(++i)
+}

@@ -50,3 +50,33 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Temporary files
+*.tmp
+*.tmp.*
+*.temp
+
+# Build directories
+*bin
+*build
+
+# IDEs and Compilers
+*.csproj
+*.sln
+*.VC.db
+*.VC.VC.opendb
+*.VC.opendb
+*.vdtproj
+*.vob
+*.vcproj
+*.user
+*.workspace
+*.workspace?*
+*.suo
+*.bak
+*.tmp
+*.bak?*
+*.orig
+*.rej
+*.dep
+*.trae
