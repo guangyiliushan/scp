@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <errno.h>
+#include <limits.h>
 #include <stdlib.h>
 #include <string.h>
-#include "lexer.h"
-#include "parser.h"
+#include "../lexer/lexer.h"
+#include "../parser/parser.h"
 #include "ast.h"
-#include "code_generator.h"
+#include "../codegen/code_generator.h"
 
 // 读取文件内容
 char* read_file(const char* filename) {
@@ -90,8 +92,10 @@ int main(int argc, char* argv[]) {
     // 获取生成的代码并保存到文件
     const char* generated_code = get_generated_code(generator);
     if (generated_code) {
+        printf("正在生成LLVM IR代码到文件: %s\n", output_file);
         save_to_file(output_file, generated_code);
     } else {
+        printf("警告: 代码生成失败，生成占位符代码\n");
         save_to_file(output_file, "// 警告: 代码生成失败\n// 生成占位符代码\n\ndefine i32 @main() {\n  ret i32 0\n}\n");
     }
     

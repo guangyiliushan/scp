@@ -3,7 +3,7 @@
 #ifndef CODE_GENERATOR_H
 #define CODE_GENERATOR_H
 
-#include "ast.h"
+#include "../common/ast.h"
 
 // Define the CodeGenerator structure
 typedef struct CodeGenerator CodeGenerator;

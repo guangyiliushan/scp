@@ -10,6 +10,7 @@ typedef enum {
     TOKEN_EOF,           // 文件结束
     TOKEN_IDENTIFIER,    // 标识符
     TOKEN_NUMBER,        // 数字
+    TOKEN_FLOAT,         // 浮点数
     TOKEN_STRING,        // 字符串
     TOKEN_CHAR,          // 字符
     
@@ -86,7 +87,7 @@ typedef enum {
     // 类型标记
     TOKEN_TYPE_INT,       // int
     TOKEN_TYPE_STR,       // str
-    TOKEN_TYP_FLO,        // float
+    TOKEN_TYPE_FLOAT,     // float
     TOKEN_TYPE_I8,        // i8
     TOKEN_TYPE_U8,        // u8
     TOKEN_TYPE_I16,       // i16

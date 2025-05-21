@@ -223,12 +223,14 @@ ASTNode* create_variable(const char* name) {
 }
 
 // 创建变量声明节点
-ASTNode* create_variable_decl(const char* name, const char* type, ASTNode* initializer) {
+ASTNode* create_variable_decl(const char* name, const char* type, 
+                             ASTNode* initializer, int is_mutable) {
     ASTNode* node = create_ast_node(NODE_VARIABLE_DECL);
     if (node) {
         node->var_decl.name = strdup(name);
         node->var_decl.type = type ? strdup(type) : NULL;
         node->var_decl.initializer = initializer;
+        node->var_decl.is_mutable = is_mutable;
     }
     return node;
 }

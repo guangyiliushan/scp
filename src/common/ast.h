@@ -81,6 +81,7 @@ typedef struct {
     char* name;              // 变量名
     char* type;              // 变量类型
     ASTNode* initializer;    // 初始化表达式
+    int is_mutable;          // 是否可变
 } VariableDeclNode;
 
 // 变量引用结构
@@ -164,5 +165,23 @@ struct ASTNode {
 // 函数原型
 ASTNode* create_ast_node(ASTNodeType type);
 void destroy_ast_node(ASTNode* node);
+ASTNode* create_variable_decl(const char* name, const char* type, 
+                             ASTNode* initializer, int is_mutable);
+ASTNode* create_int_literal(int value);
+ASTNode* create_float_literal(float value);
+ASTNode* create_string_literal(const char* value);
+ASTNode* create_bool_literal(int value);
+ASTNode* create_binary_op(OperatorType op, ASTNode* left, ASTNode* right);
+ASTNode* create_unary_op(OperatorType op, ASTNode* operand);
+ASTNode* create_variable(const char* name);
+ASTNode* create_function_call(const char* name, ASTNode** arguments, int arg_count);
+ASTNode* create_function(const char* name, ASTNode** parameters, int param_count, 
+                        const char* return_type, ASTNode* body);
+ASTNode* create_block(ASTNode** statements, int statement_count);
+ASTNode* create_if_statement(ASTNode* condition, ASTNode* then_branch, ASTNode* else_branch);
+ASTNode* create_while_statement(ASTNode* condition, ASTNode* body);
+ASTNode* create_return(ASTNode* expression);
+ASTNode* create_include(const char* filename);
+ASTNode* create_program(ASTNode** declarations, int declaration_count);
 
 #endif // AST_H

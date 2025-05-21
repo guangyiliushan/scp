@@ -2,10 +2,16 @@
 
 ; SCP标准库包含
 @.str = private unnamed_addr constant [12 x i8] c"Hello, scp!\00", align 1
-declare i32 @puts(i8* nocapture) nounwind
+@.str.1 = private unnamed_addr constant [4 x i8] c"%s\0A\00", align 1
+@.str.2 = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
+
+; 声明外部函数
+declare i32 @printf(i8* nocapture, ...) nounwind
 
 ; 主函数
 define i32 @main() {
-    %call = call i32 @puts(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str, i64 0, i64 0))
+    %_1 = load i32, i32* %i, align 4
+    %_2 = add nsw i32 %_1, 1
+    store i32 %_2, i32* %i, align 4
     ret i32 0
 }

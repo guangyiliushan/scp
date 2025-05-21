@@ -32,3 +32,7 @@ char* readline() {
     }
     return NULL;
 }
+
+void println_int(int value) {
+    printf("%d\n", value);
+}

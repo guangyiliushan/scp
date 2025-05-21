@@ -4,7 +4,7 @@
 // 声明标准库函数
 void print(const char* message);
 void println(const char* message);
-void read(char* buffer, int size);
-char* readline();
+void println_int(int value);
+char* read_line();
 
 #endif // SCP_STDIO_H

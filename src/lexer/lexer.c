@@ -112,10 +112,10 @@ static Token read_identifier(Lexer* lexer) {
         type = TOKEN_KEYWORD_FUN;
     } else if (strcmp(value, "if") == 0) {
         type = TOKEN_KEYWORD_IF;
-    } else if (strcmp(value, "else") == 0) {
-        type = TOKEN_KEYWORD_ELSE;
-    } else if (strcmp(value, "while") == 0) {
-        type = TOKEN_KEYWORD_WHILE;
+    } else if (strcmp(value, "var") == 0) {
+        type = TOKEN_KEYWORD_VAR;
+    } else if (strcmp(value, "val") == 0) {
+        type = TOKEN_KEYWORD_VAL;
     } else if (strcmp(value, "return") == 0) {
         type = TOKEN_KEYWORD_RETURN;
     } else if (strcmp(value, "include") == 0) {
@@ -291,11 +291,18 @@ Token get_next_token(Lexer* lexer) {
                 return token;
             case '-':
                 advance(lexer);
-                if (lexer->current_char == '-') {
+                if (lexer->current_char == '>') {
+                    advance(lexer);
+                    token.type = TOKEN_ARROW;
+                } else if (lexer->current_char == '-') {
                     advance(lexer);
                     token.type = TOKEN_DECREMENT;
-                } 
-                // 处理其他-开头的标记...
+                } else if (lexer->current_char == '=') {
+                    advance(lexer);
+                    token.type = TOKEN_MINUS_ASSIGN;
+                } else {
+                    token.type = TOKEN_MINUS;
+                }
                 token.line = start_line;
                 token.column = start_column;
                 token.value = NULL;
